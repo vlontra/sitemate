@@ -1,0 +1,73 @@
+const header = document.querySelector("[data-header]");
+const nav = document.querySelector("[data-nav]");
+const navToggle = document.querySelector("[data-nav-toggle]");
+
+const setHeaderState = () => {
+  header?.classList.toggle("is-scrolled", window.scrollY > 24);
+};
+
+setHeaderState();
+window.addEventListener("scroll", setHeaderState, { passive: true });
+
+const closeNav = () => {
+  nav?.classList.remove("is-open");
+  header?.classList.remove("is-open");
+  document.body.classList.remove("nav-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+  navToggle?.setAttribute("aria-label", "Abrir menu");
+};
+
+navToggle?.addEventListener("click", () => {
+  const shouldOpen = !nav?.classList.contains("is-open");
+  nav?.classList.toggle("is-open", shouldOpen);
+  header?.classList.toggle("is-open", shouldOpen);
+  document.body.classList.toggle("nav-open", shouldOpen);
+  navToggle.setAttribute("aria-expanded", String(shouldOpen));
+  navToggle.setAttribute("aria-label", shouldOpen ? "Fechar menu" : "Abrir menu");
+});
+
+nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 991) closeNav();
+});
+
+const revealItems = document.querySelectorAll("[data-reveal]");
+
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -10%", threshold: 0.08 },
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+document.querySelectorAll("[data-faq] .faq-item").forEach((item) => {
+  const button = item.querySelector("button");
+  const answer = item.querySelector(".faq-answer");
+
+  button?.addEventListener("click", () => {
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+
+    document.querySelectorAll("[data-faq] .faq-item").forEach((otherItem) => {
+      const otherButton = otherItem.querySelector("button");
+      const otherAnswer = otherItem.querySelector(".faq-answer");
+      otherButton?.setAttribute("aria-expanded", "false");
+      if (otherAnswer) otherAnswer.hidden = true;
+    });
+
+    if (!isOpen) {
+      button.setAttribute("aria-expanded", "true");
+      if (answer) answer.hidden = false;
+    }
+  });
+});
