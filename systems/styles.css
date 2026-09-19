@@ -369,6 +369,7 @@ svg {
   display: none;
   width: 42px;
   height: 42px;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 12px;
   background: transparent;
@@ -377,12 +378,14 @@ svg {
 
 .nav-toggle span {
   display: block;
-  width: 18px;
-  height: 1px;
+  width: 16px;
+  height: 1.5px;
   margin: 5px auto;
   background: currentColor;
   transition: transform 250ms ease;
 }
+.nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
 
 .hero {
   position: relative;
@@ -1605,7 +1608,9 @@ svg {
 
   .nav-toggle {
     display: block;
-    order: 3;
+    order: 2;
+    margin-left: 0;
+    border-radius: 50%;
   }
 
   .site-header.is-scrolled .nav-toggle,
@@ -1640,7 +1645,8 @@ svg {
     padding: 14px 12px;
   }
 
-  .nav-actions { margin-left: auto; margin-right: 12px; }
+  .header-brand { margin-right: auto; }
+  .nav-actions { order: 3; margin-left: 0; margin-right: 0; }
 
   .hero { min-height: 880px; padding-top: 130px; }
   .hero-showcase { width: 92%; margin-top: 58px; }
@@ -1693,9 +1699,10 @@ svg {
   h1 { font-size: clamp(2.7rem, 12vw, 4rem); }
   h2 { font-size: 2.25rem; }
 
+  .site-header { background: rgba(28, 34, 68, 0.14); backdrop-filter: blur(12px); }
   .nav-cta { display: none; }
   .site-header .language-button { flex-basis: 38px; width: 38px; min-width: 38px; height: 38px; }
-  .nav-toggle { margin-left: auto; }
+  .nav-toggle { width: 38px; height: 38px; }
   .main-nav { padding-inline: 20px; }
 
   .hero { min-height: 800px; padding-top: 118px; }
@@ -1746,25 +1753,31 @@ svg {
   .footer-brand { grid-column: 1 / -1; }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 560px) {
   .container { width: min(calc(100% - 32px), var(--container)); }
+  .site-header { height: 70px; }
+  .nav-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; }
+  .main-nav { top: 70px; }
+
+  .header-brand {
+    width: min(165px, 100%);
+    height: 35px;
+    margin: 0;
+  }
+
+  .header-brand .brand-logo-image {
+    width: 100%;
+    height: 35px;
+    transform: none;
+  }
+}
+
+@media (max-width: 479px) {
   .section { padding-block: 64px; }
   h1 { font-size: 2.55rem; letter-spacing: -0.05em; }
   h2 { font-size: 1.95rem; }
   h3 { font-size: 1.35rem; }
   p { font-size: 0.92rem; }
-
-  .header-brand {
-    width: 160px;
-    height: 40px;
-    border-radius: 8px;
-  }
-
-  .header-brand .brand-logo-image {
-    width: 160px;
-    height: 40px;
-    transform: none;
-  }
 
   .footer-logo {
     width: min(100%, 280px);
