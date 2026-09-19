@@ -9,6 +9,17 @@
     "Serviços": "Services",
     "Portfólio": "Portfolio",
     "Preços": "Pricing",
+    "Nossos preços": "Our pricing",
+    "Mensal": "Monthly",
+    "Anual": "Annually",
+    "Mais popular": "Most popular",
+    "Site funcional (10–20 páginas)": "Functional Website (10–20 pages)",
+    "Acompanhamento automático de leads": "Automated Lead Follow Up",
+    "Resposta por SMS a chamadas perdidas": "Missed Call Text Back",
+    "Funil de avaliações 5 estrelas": "5-Star Magic Review Funnel",
+    "Campanhas de marketing em um clique": "One-Click Marketing Campaigns",
+    "SEO no site": "On-Site SEO",
+    "Cobrança anual": "Annual billing",
     "Sobre": "About",
     "Agendar chamada": "Book a call",
     "Agendar Chamada": "Book a call",
@@ -148,7 +159,7 @@
     "Perguntas Frequentes": "Frequently Asked Questions",
     "Respostas diretas antes de você decidir dar o próximo passo.": "Clear answers before you take the next step.",
     "Quanto custa?": "How much does it cost?",
-    "Oferecemos planos que se ajustam ao estágio da sua empresa. Nossos sistemas se pagam rapidamente com os novos clientes que geram. Sem taxas escondidas.": "We offer plans to suit your business stage. Our systems quickly pay for themselves through the new customers they generate. No hidden fees.",
+    "O plano Contractor Advanced custa £99 por mês ou £990 por ano. Sem taxas escondidas.": "Contractor Advanced costs £99 per month or £990 per year. No hidden fees.",
     "Vocês trabalham com qualquer contratista?": "Do you work with every contractor?",
     "Especializamos em negócios de serviço local já estabelecidos e que querem escalar. Geralmente não trabalhamos com empresas recém-criadas.": "We focus on established local service businesses looking to grow. We generally do not work with brand-new companies.",
     "Quanto tempo leva para lançar?": "How long does launch take?",
@@ -207,7 +218,7 @@
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   while (walker.nextNode()) {
     const node = walker.currentNode;
-    if (!node.parentElement || node.parentElement.closest("script, style, svg")) continue;
+    if (!node.parentElement || node.parentElement.closest("script, style, svg, [data-i18n-dynamic]")) continue;
     const original = node.nodeValue;
     if (normalise(original)) textNodes.push({ node, original, key: normalise(original) });
   }
@@ -238,10 +249,14 @@
       element.setAttribute(name, language === "en" ? (en[normalise(original)] || original) : original);
     });
     document.title = language === "en"
-      ? "GroundWorks Systems — Marketing systems for contractors"
+      ? (document.body.classList.contains("pricing-page")
+        ? "GroundWorks Systems — Pricing"
+        : "GroundWorks Systems — Marketing systems for contractors")
       : titlePt;
     if (description) description.content = language === "en"
-      ? "High-converting websites and automated marketing systems for local contractors."
+      ? (document.body.classList.contains("pricing-page")
+        ? "Contractor Advanced pricing: £99 monthly or £990 annually. See what is included and book a call."
+        : "High-converting websites and automated marketing systems for local contractors.")
       : descriptionPt;
     document.querySelectorAll("[data-language]").forEach((button) => {
       button.textContent = language === "pt" ? "EN" : "PT";
@@ -257,6 +272,7 @@
     if (navToggle) navToggle.setAttribute("aria-label", language === "en"
       ? (navToggle.getAttribute("aria-expanded") === "true" ? "Close menu" : "Open menu")
       : (navToggle.getAttribute("aria-expanded") === "true" ? "Fechar menu" : "Abrir menu"));
+    document.dispatchEvent(new CustomEvent("groundworks:languagechange", { detail: { language } }));
   }
 
   document.querySelectorAll("[data-language]").forEach((button) => {
