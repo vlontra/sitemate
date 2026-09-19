@@ -5,9 +5,12 @@ Projeto estático para um único deploy na Hostinger:
 - `/` — GroundWorks Directory (página inicial);
 - `/profile.html?id=...` — perfil de um profissional;
 - `/systems/` — GroundWorks Systems;
+- `/demo/` — exemplo de site de paisagismo (marca fictícia, conteúdo ilustrativo e chat demonstrativo);
 - `/directory/` — redirecionamento de compatibilidade para a página inicial.
 
-Os dois sites compartilham o mesmo repositório. No deploy da Hostinger, publique a **raiz do repositório como site estático**; não selecione apenas `systems/` ou `directory/` como diretório de publicação. Não há `package.json` nem etapa de build.
+O diretório, o site Systems e a demo compartilham o mesmo repositório. No deploy da Hostinger, publique a **raiz do repositório como site estático**; não selecione apenas `systems/` ou `directory/` como diretório de publicação. Não há `package.json` nem etapa de build.
+
+A demo usa a marca fictícia Verdant & Stone e fotografias geradas para este projeto. O chat responde a perguntas comuns com respostas locais pré-definidas; o formulário não envia nem armazena dados. Depoimentos e projetos são exemplos claramente identificados, para substituição por dados reais em um site de cliente.
 
 O botão PT/EN compartilha a preferência entre as duas páginas. Os CTAs de cadastro e de agendamento abrem o WhatsApp comercial em `+44 7404 400524`, com mensagem adequada ao idioma e à página.
 
