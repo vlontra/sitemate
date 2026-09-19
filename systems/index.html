@@ -15,8 +15,8 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="../assets/images/groundworks-favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=groundworks-2" />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=groundworks-trades-3" />
+    <script src="script.js?v=groundworks-trades-3" defer></script>
     <script src="i18n.js" defer></script>
   </head>
   <body>
@@ -227,8 +227,9 @@
           <div class="trade-carousel-header">
             <p>Deslize para explorar mais especialidades</p>
             <div class="trade-carousel-controls">
-              <button class="trade-carousel-arrow" type="button" data-trade-prev aria-label="Ver ofícios anteriores" disabled><span aria-hidden="true">←</span></button>
-              <button class="trade-carousel-arrow" type="button" data-trade-next aria-label="Ver próximos ofícios"><span aria-hidden="true">→</span></button>
+              <span class="trade-carousel-page" data-trade-page aria-live="polite">01 / 04</span>
+              <button class="trade-carousel-arrow" type="button" data-trade-prev aria-label="Ver ofícios anteriores" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" /></svg></button>
+              <button class="trade-carousel-arrow" type="button" data-trade-next aria-label="Ver próximos ofícios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></button>
             </div>
           </div>
           <div class="trade-grid" data-trade-carousel role="region" aria-label="Ofícios que atendemos" tabindex="0">

@@ -38,18 +38,31 @@ window.addEventListener("resize", () => {
 const tradeCarousel = document.querySelector("[data-trade-carousel]");
 const tradePrev = document.querySelector("[data-trade-prev]");
 const tradeNext = document.querySelector("[data-trade-next]");
+const tradePage = document.querySelector("[data-trade-page]");
 
 if (tradeCarousel && tradePrev && tradeNext) {
+  const cards = tradeCarousel.querySelectorAll(".trade-card");
+  const getPageMetrics = () => {
+    const card = cards[0];
+    if (!card) return { step: 0, columns: 1, pages: 1, current: 0 };
+    const gap = parseFloat(getComputedStyle(tradeCarousel).columnGap) || 0;
+    const step = card.getBoundingClientRect().width + gap;
+    const columns = Math.max(1, Math.round((tradeCarousel.clientWidth + gap) / step));
+    const pages = Math.ceil(cards.length / (columns * 2));
+    const current = Math.min(pages - 1, Math.round(tradeCarousel.scrollLeft / (step * columns)));
+    return { step, columns, pages, current };
+  };
   const updateTradeControls = () => {
+    const { pages, current } = getPageMetrics();
     tradePrev.disabled = tradeCarousel.scrollLeft <= 2;
     tradeNext.disabled = tradeCarousel.scrollLeft + tradeCarousel.clientWidth >= tradeCarousel.scrollWidth - 2;
+    if (tradePage) tradePage.textContent = `${String(current + 1).padStart(2, "0")} / ${String(pages).padStart(2, "0")}`;
   };
   const moveTrades = (direction) => {
-    const card = tradeCarousel.querySelector(".trade-card");
-    if (!card) return;
-    const gap = parseFloat(getComputedStyle(tradeCarousel).columnGap) || 0;
-    tradeCarousel.scrollBy({
-      left: direction * (card.getBoundingClientRect().width + gap),
+    const { step, columns, pages, current } = getPageMetrics();
+    const targetPage = Math.max(0, Math.min(pages - 1, current + direction));
+    tradeCarousel.scrollTo({
+      left: targetPage * step * columns,
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
   };
