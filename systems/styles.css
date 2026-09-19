@@ -274,6 +274,32 @@ svg {
   stroke-width: 1.65;
 }
 
+.brand-logo-image {
+  display: block;
+  max-width: none;
+  height: auto;
+}
+
+.header-brand {
+  display: block;
+  width: 205px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 10px;
+  line-height: 0;
+}
+
+.header-brand .brand-logo-image {
+  width: 205px;
+  height: 48px;
+  transform: none;
+}
+
+.site-header.is-scrolled .header-brand .brand-logo-image,
+.site-header.is-open .header-brand .brand-logo-image {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(16%) saturate(1604%) hue-rotate(194deg) brightness(90%);
+}
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -1376,6 +1402,20 @@ svg {
   color: var(--ink);
 }
 
+.footer-logo {
+  display: block;
+  width: min(100%, 300px);
+  overflow: hidden;
+  border-radius: 16px;
+  line-height: 0;
+}
+
+.footer-logo .brand-logo-image {
+  width: 100%;
+  transform: none;
+  filter: brightness(0) saturate(100%) invert(19%) sepia(16%) saturate(1604%) hue-rotate(194deg) brightness(90%);
+}
+
 .footer-brand p {
   max-width: 350px;
   margin-bottom: 0;
@@ -1607,6 +1647,27 @@ svg {
   h2 { font-size: 1.95rem; }
   h3 { font-size: 1.35rem; }
   p { font-size: 0.92rem; }
+
+  .header-brand {
+    width: 160px;
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .header-brand .brand-logo-image {
+    width: 160px;
+    height: 40px;
+    transform: none;
+  }
+
+  .footer-logo {
+    width: min(100%, 280px);
+  }
+
+  .footer-logo .brand-logo-image {
+    width: 100%;
+    transform: none;
+  }
 
   .button { width: 100%; }
   .hero { min-height: 740px; padding-top: 110px; }
