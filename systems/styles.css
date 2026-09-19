@@ -300,6 +300,29 @@ svg {
   filter: brightness(0) saturate(100%) invert(19%) sepia(16%) saturate(1604%) hue-rotate(194deg) brightness(90%);
 }
 
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.language-button {
+  display: grid;
+  min-width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.site-header.is-scrolled .language-button,
+.site-header.is-open .language-button {
+  border-color: var(--border);
+  background: var(--white);
+}
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -410,7 +433,10 @@ svg {
 .hero-copy h1 {
   max-width: 900px;
   margin-top: 22px;
+  font-size: clamp(1.6rem, 6.9vw, 4.75rem);
 }
+
+.hero-copy h1 span { display: block; white-space: nowrap; }
 
 .hero-copy p {
   max-width: 680px;
@@ -1536,7 +1562,7 @@ svg {
     padding: 14px 12px;
   }
 
-  .nav-cta { margin-left: auto; margin-right: 12px; }
+  .nav-actions { margin-left: auto; margin-right: 12px; }
 
   .hero { min-height: 880px; padding-top: 130px; }
   .hero-showcase { width: 92%; margin-top: 58px; }

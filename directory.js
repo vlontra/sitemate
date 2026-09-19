@@ -33,7 +33,7 @@
       "empty.button": "Ver todos",
       "join.eyebrow": "Você trabalha com construção ou manutenção?",
       "join.title": "Cadastre sua empresa gratuitamente.",
-      "join.text": "O cadastro pelo WhatsApp estará disponível em breve.",
+      "join.text": "Fale conosco no WhatsApp para cadastrar sua empresa.",
       "footer.description": "Profissionais brasileiros para projetos em Londres e região.",
       "footer.note": "Perfis em fase de confirmação.",
       "profile.back": "Voltar ao diretório",
@@ -67,7 +67,7 @@
       "empty.button": "View everyone",
       "join.eyebrow": "Do you work in construction or property maintenance?",
       "join.title": "List your business for free.",
-      "join.text": "WhatsApp registration will be available soon.",
+      "join.text": "Message us on WhatsApp to list your business.",
       "footer.description": "Brazilian professionals for projects across London and nearby areas.",
       "footer.note": "Profiles are currently being confirmed.",
       "profile.back": "Back to directory",
@@ -250,6 +250,12 @@
     document.querySelectorAll("[data-language]").forEach((button) => {
       button.textContent = state.language === "pt" ? "EN" : "PT";
       button.setAttribute("aria-label", state.language === "pt" ? "Mudar idioma para inglês" : "Switch language to Portuguese");
+    });
+    const registrationMessage = state.language === "pt"
+      ? "Olá! Quero cadastrar minha empresa no GroundWorks Directory."
+      : "Hello! I'd like to list my business in the GroundWorks Directory.";
+    document.querySelectorAll('[data-whatsapp="register"]').forEach((link) => {
+      link.href = `https://wa.me/447404400524?text=${encodeURIComponent(registrationMessage)}`;
     });
     document.title = document.body.dataset.page === "profile"
       ? (state.language === "pt" ? "Perfil profissional | GroundWorks Directory" : "Professional profile | GroundWorks Directory")

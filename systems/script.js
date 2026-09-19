@@ -1,6 +1,9 @@
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
+const navLabel = (open) => document.documentElement.lang === "en-GB"
+  ? (open ? "Close menu" : "Open menu")
+  : (open ? "Fechar menu" : "Abrir menu");
 
 const setHeaderState = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -14,7 +17,7 @@ const closeNav = () => {
   header?.classList.remove("is-open");
   document.body.classList.remove("nav-open");
   navToggle?.setAttribute("aria-expanded", "false");
-  navToggle?.setAttribute("aria-label", "Abrir menu");
+  navToggle?.setAttribute("aria-label", navLabel(false));
 };
 
 navToggle?.addEventListener("click", () => {
@@ -23,7 +26,7 @@ navToggle?.addEventListener("click", () => {
   header?.classList.toggle("is-open", shouldOpen);
   document.body.classList.toggle("nav-open", shouldOpen);
   navToggle.setAttribute("aria-expanded", String(shouldOpen));
-  navToggle.setAttribute("aria-label", shouldOpen ? "Fechar menu" : "Abrir menu");
+  navToggle.setAttribute("aria-label", navLabel(shouldOpen));
 });
 
 nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));

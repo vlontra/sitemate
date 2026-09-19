@@ -14,19 +14,15 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232e335b'/%3E%3Cpath d='M9 10.5 16 6l7 4.5v8L16 26l-7-7.5v-8Zm0 0 7 4.5 7-4.5M16 15v11' fill='none' stroke='%23f5f4fd' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/groundworks-favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <script src="i18n.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <svg class="svg-sprite" aria-hidden="true">
-      <symbol id="icon-logo" viewBox="0 0 32 32">
-        <path d="M16 3.5c4.9 0 8.2 3.3 8.2 8.2 0 4.5-3 7.8-8.2 12.8-5.2-5-8.2-8.3-8.2-12.8 0-4.9 3.3-8.2 8.2-8.2Z" />
-        <path d="M10.2 11.7 16 8.3l5.8 3.4v6.7L16 21.7l-5.8-3.3v-6.7Z" />
-        <path d="m10.2 11.7 5.8 3.4 5.8-3.4M16 15.1v6.6" />
-      </symbol>
       <symbol id="icon-arrow" viewBox="0 0 24 24">
         <path d="M5 12h14M14 7l5 5-5 5" />
       </symbol>
@@ -96,7 +92,10 @@
           <a href="../">GroundWorks Directory</a>
         </nav>
 
-        <a class="button button-light nav-cta" href="#contato">Agendar chamada</a>
+        <div class="nav-actions">
+          <button class="language-button" type="button" data-language aria-label="Mudar idioma para inglês">EN</button>
+          <a class="button button-light nav-cta" href="https://wa.me/447404400524?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20chamada%20sobre%20o%20GroundWorks%20Systems." target="_blank" rel="noopener noreferrer" data-whatsapp="call">Agendar chamada</a>
+        </div>
       </div>
     </header>
 
@@ -107,7 +106,7 @@
         <div class="container hero-inner">
           <div class="hero-copy" data-reveal>
             <span class="tag tag-on-dark">Marketing para contratistas</span>
-            <h1>Sites &amp; Sistemas de Marketing para Contratistas</h1>
+            <h1><span>Mais clientes.</span><span>Menos leads perdidos.</span></h1>
             <p>
               Transformamos seu negócio com marketing automatizado, sites de alta conversão e gestão de
               avaliações 5 estrelas. Mantemos sua agenda cheia.
@@ -117,7 +116,7 @@
                 Ver nosso trabalho
                 <svg class="button-icon" aria-hidden="true"><use href="#icon-arrow"></use></svg>
               </a>
-              <a class="button button-ghost" href="#contato">Agendar chamada</a>
+              <a class="button button-ghost" href="https://wa.me/447404400524?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20chamada%20sobre%20o%20GroundWorks%20Systems." target="_blank" rel="noopener noreferrer" data-whatsapp="call">Agendar chamada</a>
             </div>
           </div>
 
@@ -404,7 +403,7 @@
             </div>
             <div class="prefooter-action">
               <p>Uma conversa rápida para entender seu momento e desenhar o sistema certo.</p>
-              <a class="button button-light" href="mailto:hello@sitemate.com?subject=Quero%20agendar%20uma%20chamada">Agendar Chamada</a>
+              <a class="button button-light" href="https://wa.me/447404400524?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20chamada%20sobre%20o%20GroundWorks%20Systems." target="_blank" rel="noopener noreferrer" data-whatsapp="call">Agendar Chamada</a>
             </div>
             <div class="prefooter-image" aria-hidden="true">
               <img src="../assets/images/hero-contractor.webp" alt="" loading="lazy" />
@@ -419,7 +418,7 @@
             <span class="tag">Tudo esclarecido</span>
             <h2>Perguntas Frequentes</h2>
             <p>Respostas diretas antes de você decidir dar o próximo passo.</p>
-            <a class="button button-dark" href="#contato">Agendar chamada</a>
+            <a class="button button-dark" href="https://wa.me/447404400524?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20chamada%20sobre%20o%20GroundWorks%20Systems." target="_blank" rel="noopener noreferrer" data-whatsapp="call">Agendar chamada</a>
           </div>
 
           <div class="faq-list" data-faq>
@@ -496,8 +495,8 @@
           <h2>Empresa</h2>
           <a href="#sobre">Sobre</a>
           <a href="#contato">Contato</a>
-          <a href="#footer">Privacy Policy</a>
-          <a href="#footer">Terms &amp; Conditions</a>
+          <a href="#footer">Política de Privacidade</a>
+          <a href="#footer">Termos e Condições</a>
         </div>
         <div class="footer-column">
           <h2>Redes Sociais</h2>
@@ -509,7 +508,7 @@
         </div>
       </div>
       <div class="container footer-bottom">
-        <span>© GroundWorks 2026. All Rights Reserved.</span>
+        <span>© GroundWorks 2026. Todos os direitos reservados.</span>
         <a href="#inicio">Voltar ao topo ↑</a>
       </div>
     </footer>
