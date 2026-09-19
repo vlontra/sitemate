@@ -1024,6 +1024,41 @@ svg {
   object-fit: cover;
 }
 
+.feature-media-laptop {
+  padding: 52px 24px;
+  background: radial-gradient(circle at 50% 44%, #ffffff 0, #edf2ff 61%, #e4ebfd 100%);
+}
+
+.feature-media-laptop::after { display: none; }
+
+.laptop-mockup { width: min(91%, 700px); filter: drop-shadow(0 25px 25px rgba(28, 42, 77, 0.18)); }
+
+.laptop-lid {
+  position: relative;
+  padding: 13px 12px 12px;
+  border: 2px solid #404a59;
+  border-radius: 16px 16px 6px 6px;
+  background: linear-gradient(135deg, #26313f, #111923 58%, #354150);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.laptop-camera { position: absolute; top: 5px; left: 50%; width: 3px; height: 3px; border-radius: 50%; background: #758ca0; }
+
+.laptop-screen { aspect-ratio: 16 / 10; overflow: hidden; background: #0f2d21; }
+.laptop-screen img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+.laptop-base {
+  position: relative;
+  width: 108%;
+  height: 18px;
+  margin-left: -4%;
+  border-radius: 3px 3px 55% 55%;
+  background: linear-gradient(#d8dfe7 0%, #aeb9c7 48%, #677584 82%, #475462 100%);
+  box-shadow: inset 0 1px rgba(255,255,255,.9);
+}
+
+.laptop-base span { display: block; width: 17%; height: 5px; margin: auto; border-radius: 0 0 7px 7px; background: #9ca9b7; }
+
 .feature-media-phone {
   background:
     radial-gradient(circle at center, rgba(255, 255, 255, 0.9), transparent 50%),
