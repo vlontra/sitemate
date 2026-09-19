@@ -1077,6 +1077,9 @@ svg {
   height: 500px;
   min-height: 0;
   object-fit: contain;
+  /* The source mockup has a small white export margin around the device. Crop
+     that margin so the phone sits cleanly on the section's blue background. */
+  clip-path: inset(0 4% 0 round 30px);
   filter: drop-shadow(0 25px 40px rgba(35, 43, 79, 0.2));
 }
 
