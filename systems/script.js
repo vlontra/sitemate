@@ -35,6 +35,31 @@ window.addEventListener("resize", () => {
   if (window.innerWidth > 991) closeNav();
 });
 
+const tradeCarousel = document.querySelector("[data-trade-carousel]");
+const tradePrev = document.querySelector("[data-trade-prev]");
+const tradeNext = document.querySelector("[data-trade-next]");
+
+if (tradeCarousel && tradePrev && tradeNext) {
+  const updateTradeControls = () => {
+    tradePrev.disabled = tradeCarousel.scrollLeft <= 2;
+    tradeNext.disabled = tradeCarousel.scrollLeft + tradeCarousel.clientWidth >= tradeCarousel.scrollWidth - 2;
+  };
+  const moveTrades = (direction) => {
+    const card = tradeCarousel.querySelector(".trade-card");
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(tradeCarousel).columnGap) || 0;
+    tradeCarousel.scrollBy({
+      left: direction * (card.getBoundingClientRect().width + gap),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
+  tradePrev.addEventListener("click", () => moveTrades(-1));
+  tradeNext.addEventListener("click", () => moveTrades(1));
+  tradeCarousel.addEventListener("scroll", updateTradeControls, { passive: true });
+  window.addEventListener("resize", updateTradeControls);
+  updateTradeControls();
+}
+
 const revealItems = document.querySelectorAll("[data-reveal]");
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

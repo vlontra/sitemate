@@ -760,11 +760,57 @@ svg {
 
 .trade-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 44px) / 3);
   gap: 22px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  scrollbar-width: none;
+  padding: 8px 2px 18px;
+  margin: -8px -2px -18px;
 }
 
+.trade-grid::-webkit-scrollbar { display: none; }
+.trade-grid:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+
+.trade-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.trade-carousel-header p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+}
+
+.trade-carousel-controls { display: flex; gap: 10px; }
+.trade-carousel-arrow {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(var(--ink-rgb), 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease;
+}
+.trade-carousel-arrow:hover:not(:disabled) { background: #fff; transform: translateY(-2px); }
+.trade-carousel-arrow:disabled { opacity: 0.35; cursor: default; }
+.trade-carousel-arrow:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
 .trade-card {
+  scroll-snap-align: start;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid rgba(var(--ink-rgb), 0.11);
   border-radius: var(--radius-xl);
@@ -1595,7 +1641,7 @@ svg {
   .stats-grid article:nth-child(3) { border-right: 0; }
   .stats-grid article:nth-child(-n + 3) { border-bottom: 1px solid var(--border); }
 
-  .trade-grid { grid-template-columns: repeat(2, 1fr); }
+  .trade-grid { grid-auto-columns: calc((100% - 22px) / 2); }
 
   .feature-row { gap: 48px; }
   .feature-row-reverse .feature-copy,
@@ -1653,7 +1699,7 @@ svg {
   .stats-grid article:nth-child(even) { border-right: 0; }
   .stats-grid article:last-child { grid-column: 1 / -1; border-bottom: 0; }
 
-  .trade-grid { grid-template-columns: 1fr; }
+  .trade-grid { grid-auto-columns: min(78%, 340px); }
   .trade-image { height: 260px; }
 
   .feature-stack { gap: 80px; }
@@ -1736,6 +1782,9 @@ svg {
   .trade-image { height: 210px; }
   .trade-content { min-height: 170px; padding: 24px; }
   .trade-icon { top: 20px; right: 20px; }
+  .trade-carousel-header { margin-bottom: 18px; }
+  .trade-carousel-header p { max-width: 150px; font-size: 0.75rem; }
+  .trade-carousel-arrow { width: 40px; height: 40px; }
 
   .deliverables { padding-bottom: 90px; }
   .feature-copy .feature-icon { margin-bottom: 22px; }
