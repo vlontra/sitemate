@@ -23,7 +23,7 @@
     "Sobre": "About",
     "Agendar chamada": "Book a call",
     "Agendar Chamada": "Book a call",
-    "Marketing para contratistas": "Marketing for contractors",
+    "Sistemas de Marketing para Contratistas": "Marketing Systems for Contractors",
     "Transforme Mais Leads em Obras Fechadas.": "Turn More Leads Into Booked Jobs.",
     "Sites, acompanhamento com IA, automações e gestão de reputação criados para ajudar contratistas a gerar mais leads e agendar mais orçamentos.": "Websites, AI-powered follow-up, automation and reputation management built to help contractors generate more leads and book more estimates.",
     "Ver nosso trabalho": "See our work",
