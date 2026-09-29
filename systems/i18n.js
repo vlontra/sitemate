@@ -179,7 +179,7 @@
     "Perguntas Frequentes": "Frequently Asked Questions",
     "Respostas diretas antes de você decidir dar o próximo passo.": "Clear answers before you take the next step.",
     "Quanto custa?": "How much does it cost?",
-    "O plano Contractor Advanced custa £99 por mês ou £990 por ano. Sem taxas escondidas.": "Contractor Advanced costs £99 per month or £990 per year. No hidden fees.",
+    "O plano Contractor Advanced custa £197 por mês ou £1.970 por ano. Sem taxas escondidas.": "Contractor Advanced costs £197 per month or £1,970 per year. No hidden fees.",
     "Vocês trabalham com qualquer contratista?": "Do you work with every contractor?",
     "Especializamos em negócios de serviço local já estabelecidos e que querem escalar. Geralmente não trabalhamos com empresas recém-criadas.": "We focus on established local service businesses looking to grow. We generally do not work with brand-new companies.",
     "Quanto tempo leva para lançar?": "How long does launch take?",
@@ -275,7 +275,7 @@
       : titlePt;
     if (description) description.content = language === "en"
       ? (document.body.classList.contains("pricing-page")
-        ? "Contractor Advanced pricing: £99 monthly or £990 annually. See what is included and book a call."
+        ? "Contractor Advanced pricing: £197 monthly or £1,970 annually. See what is included and book a call."
         : "High-converting websites and automated marketing systems for local contractors.")
       : descriptionPt;
     document.querySelectorAll("[data-language]").forEach((button) => {
