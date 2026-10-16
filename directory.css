@@ -382,6 +382,25 @@ svg { display: block; }
 .profile-section h2 { margin: 0 0 12px; font-size: 1rem; font-weight: 600; }
 .profile-services { display: flex; flex-wrap: wrap; gap: 8px; }
 .profile-services .service-tag { padding: 8px 12px; background: var(--canvas); font-size: 0.78rem; }
+.profile-social-section { padding-top: 2px; }
+.profile-social-links { display: flex; flex-wrap: wrap; gap: 9px; }
+.profile-social-link {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: transform 220ms var(--ease-out), background 180ms ease, border-color 180ms ease;
+}
+.profile-social-link:hover { border-color: rgba(var(--ink-rgb), 0.34); background: var(--surface); transform: translateY(-2px); }
+.profile-social-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; }
 .profile-notice { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--ink-muted); font-family: var(--font-body); font-size: 0.8rem; line-height: 1.55; }
 .profile-not-found { max-width: 620px; margin: 60px auto; text-align: center; }

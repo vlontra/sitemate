@@ -95,6 +95,8 @@
       comingSoon: "Esse link será ativado quando os dados finais estiverem definidos.",
       profileServices: "Especialidades",
       serviceArea: "Área de atendimento",
+      socialMedia: "Redes sociais",
+      email: "Enviar e-mail",
       profileNotice: "Este perfil está em fase de confirmação. Os dados podem ser atualizados ou removidos a pedido do profissional.",
       profileMissing: "Perfil não encontrado",
       profileMissingText: "O profissional que você procura não está disponível ou o endereço está incorreto.",
@@ -121,6 +123,8 @@
       comingSoon: "This link will be activated when the final details are available.",
       profileServices: "Specialities",
       serviceArea: "Service area",
+      socialMedia: "Social media",
+      email: "Send email",
       profileNotice: "This profile is being confirmed. Details can be updated or removed at the professional's request.",
       profileMissing: "Profile not found",
       profileMissingText: "The professional you are looking for is unavailable or the address is incorrect.",
@@ -193,6 +197,29 @@
     } catch { return ""; }
   };
 
+  const validEmail = (value) => {
+    const email = String(value ?? "").trim();
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
+  };
+
+  const socialNetworks = [
+    {
+      key: "facebook_url",
+      label: "Facebook",
+      icon: '<path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v6h4v-6h3l1-4h-4V9c0-.7.3-1 1-1Z"/>'
+    },
+    {
+      key: "instagram_url",
+      label: "Instagram",
+      icon: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'
+    },
+    {
+      key: "linkedin_url",
+      label: "LinkedIn",
+      icon: '<rect x="4" y="9" width="4" height="11"/><path d="M6 4.5v.01M12 20V9h4v2c1-1.5 4-2 4 2v7"/>'
+    }
+  ];
+
   const categoryName = (key) => categories[key]?.[state.language] || key;
   const icon = (key, className = "") => `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true">${iconPaths[categories[key]?.icon] || iconPaths.tools}</svg>`;
   const initials = (name) => name.split(/\s+/).filter(Boolean).slice(0, 2).map((word) => word[0]).join("").toUpperCase();
@@ -206,6 +233,10 @@
       area: String(record.area ?? ""),
       phone: String(record.phone ?? ""),
       website: String(record.website ?? ""),
+      email: String(record.email ?? ""),
+      facebook_url: String(record.facebook_url ?? ""),
+      instagram_url: String(record.instagram_url ?? ""),
+      linkedin_url: String(record.linkedin_url ?? ""),
       description: String(record.description ?? ""),
       image_url: String(record.image_url ?? ""),
       featured: record.featured === true
@@ -221,7 +252,7 @@
     const pageSize = 500;
     for (let offset = 0; ; offset += pageSize) {
       const url = new URL("/rest/v1/professionals", dataConfig.supabaseUrl);
-      url.searchParams.set("select", "id,name,category,services,area,phone,website,description,image_url,featured");
+      url.searchParams.set("select", "id,name,category,services,area,phone,website,email,facebook_url,instagram_url,linkedin_url,description,image_url,featured");
       url.searchParams.set("status", "eq.published");
       url.searchParams.set("order", "name.asc");
       url.searchParams.set("limit", String(pageSize));
@@ -576,7 +607,11 @@
 
     document.title = `${trader.name} | GroundWorks Directory`;
     const website = validWebsite(trader.website);
+    const email = validEmail(trader.email);
     const image = validImage(trader.image_url);
+    const socialLinks = socialNetworks
+      .map((network) => ({ ...network, url: validWebsite(trader[network.key]) }))
+      .filter((network) => network.url);
     root.innerHTML = `
       <nav class="profile-breadcrumb" aria-label="Breadcrumb">
         <a href="./">${copy[state.language]["nav.home"]}</a><span aria-hidden="true">/</span><span>${escapeHtml(categoryName(trader.category))}</span>
@@ -603,8 +638,20 @@
             <h2>${ui[state.language].serviceArea}</h2>
             <span class="location-row">${escapeHtml(trader.area)}</span>
           </section>
+          ${socialLinks.length ? `
+            <section class="profile-section profile-social-section">
+              <h2>${ui[state.language].socialMedia}</h2>
+              <div class="profile-social-links">
+                ${socialLinks.map((network) => `
+                  <a class="profile-social-link" href="${escapeHtml(network.url)}" target="_blank" rel="noopener noreferrer" aria-label="${network.label}">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">${network.icon}</svg>
+                    <span>${network.label}</span>
+                  </a>`).join("")}
+              </div>
+            </section>` : ""}
           <div class="profile-actions">
             ${trader.phone ? `<button class="button button-outline" type="button" data-phone="${escapeHtml(trader.phone)}">${ui[state.language].showPhone}</button>` : ""}
+            ${email ? `<a class="button button-outline" href="mailto:${escapeHtml(email)}">${ui[state.language].email}</a>` : ""}
             ${website ? `<a class="button button-dark" href="${escapeHtml(website)}" target="_blank" rel="noopener noreferrer">${ui[state.language].website}</a>` : ""}
           </div>
           <p class="profile-notice">${ui[state.language].profileNotice}</p>
