@@ -146,6 +146,7 @@
     flooring: { pt: "Pisos e azulejos", en: "Flooring & tiling", icon: "tiles" },
     plasterer: { pt: "Plaster e drywall", en: "Plastering & drywall", icon: "trowel" },
     handyman: { pt: "Handyman", en: "Handyman", icon: "tools" },
+    transport: { pt: "Carga e transportes", en: "Moving & transport", icon: "truck" },
     "interior-designer": { pt: "Design de interiores", en: "Interior design", icon: "plan" }
   };
 
@@ -161,6 +162,7 @@
     tiles: '<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',
     trowel: '<path d="M3 15h12L9 9 3 15Z"/><path d="m10 11 5-5"/><path d="M14 5h6v3h-6z"/>',
     tools: '<path d="m14 6 4-4 4 4-4 4"/><path d="m16 8-8 8"/><path d="m9 18-3 3-3-3 3-3"/><path d="m5 4 15 15"/>',
+    truck: '<path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>',
     plan: '<path d="M4 4h16v16H4z"/><path d="M9 4v7h11M4 15h9v5"/>'
   };
 
