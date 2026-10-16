@@ -147,6 +147,7 @@
     plasterer: { pt: "Plaster e drywall", en: "Plastering & drywall", icon: "trowel" },
     handyman: { pt: "Handyman", en: "Handyman", icon: "tools" },
     transport: { pt: "Carga e transportes", en: "Moving & transport", icon: "truck" },
+    "waste-removal": { pt: "Remoção de lixo", en: "Waste removal", icon: "trash" },
     "interior-designer": { pt: "Design de interiores", en: "Interior design", icon: "plan" }
   };
 
@@ -163,6 +164,7 @@
     trowel: '<path d="M3 15h12L9 9 3 15Z"/><path d="m10 11 5-5"/><path d="M14 5h6v3h-6z"/>',
     tools: '<path d="m14 6 4-4 4 4-4 4"/><path d="m16 8-8 8"/><path d="m9 18-3 3-3-3 3-3"/><path d="m5 4 15 15"/>',
     truck: '<path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>',
+    trash: '<path d="M4 7h16"/><path d="m9 7 1-3h4l1 3"/><path d="m6 7 1 14h10l1-14"/><path d="M10 11v6M14 11v6"/>',
     plan: '<path d="M4 4h16v16H4z"/><path d="M9 4v7h11M4 15h9v5"/>'
   };
 
@@ -611,7 +613,7 @@
     const website = validWebsite(trader.website);
     const email = validEmail(trader.email);
     const image = validImage(trader.image_url);
-    const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem"].includes(trader.id);
+    const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem", "avr-moving-services-waste-removal"].includes(trader.id);
     const imageAlt = trader.id === "jm-home-improvement-swindon"
       ? `${trader.name} logo`
       : `${trader.name} services`;
