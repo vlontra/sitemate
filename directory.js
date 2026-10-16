@@ -609,6 +609,7 @@
     const website = validWebsite(trader.website);
     const email = validEmail(trader.email);
     const image = validImage(trader.image_url);
+    const imageIsLogo = trader.id === "jm-home-improvement-swindon";
     const socialLinks = socialNetworks
       .map((network) => ({ ...network, url: validWebsite(trader[network.key]) }))
       .filter((network) => network.url);
@@ -617,8 +618,8 @@
         <a href="./">${copy[state.language]["nav.home"]}</a><span aria-hidden="true">/</span><span>${escapeHtml(categoryName(trader.category))}</span>
       </nav>
       <article class="profile-card">
-        <div class="profile-visual${image ? " has-image" : ""}">
-          ${image ? `<img src="${escapeHtml(image)}" alt="" />` : `
+        <div class="profile-visual${image ? " has-image" : ""}${imageIsLogo ? " is-logo" : ""}">
+          ${image ? `<img src="${escapeHtml(image)}" alt="${imageIsLogo ? `${escapeHtml(trader.name)} logo` : ""}" />` : `
             <span class="profile-visual-icon">${icon(trader.category)}</span>
             <span class="profile-initials" aria-hidden="true">${escapeHtml(initials(trader.name))}</span>`}
         </div>
