@@ -613,7 +613,7 @@
     const website = validWebsite(trader.website);
     const email = validEmail(trader.email);
     const image = validImage(trader.image_url);
-    const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem", "avr-moving-services-waste-removal", "helio-pintor-profissional"].includes(trader.id);
+    const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem", "avr-moving-services-waste-removal", "helio-pintor-profissional", "roger-transport-services"].includes(trader.id);
     const imageAlt = trader.id === "jm-home-improvement-swindon"
       ? `${trader.name} logo`
       : `${trader.name} services`;
