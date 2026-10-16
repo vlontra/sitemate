@@ -201,6 +201,14 @@
     } catch { return ""; }
   };
 
+  const traderImage = (trader) => {
+    const image = validImage(trader.image_url);
+    if (!image || trader.id !== "roger-transport-services") return image;
+    const url = new URL(image);
+    url.searchParams.set("v", "2");
+    return url.href;
+  };
+
   const validEmail = (value) => {
     const email = String(value ?? "").trim();
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
@@ -427,7 +435,7 @@
 
   function traderCard(trader) {
     const website = validWebsite(trader.website);
-    const image = validImage(trader.image_url);
+    const image = traderImage(trader);
     const serviceTags = trader.services.slice(0, 3)
       .map((service) => `<span class="service-tag">${escapeHtml(categoryName(service))}</span>`)
       .join("");
@@ -612,7 +620,7 @@
     document.title = `${trader.name} | GroundWorks Directory`;
     const website = validWebsite(trader.website);
     const email = validEmail(trader.email);
-    const image = validImage(trader.image_url);
+    const image = traderImage(trader);
     const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem", "avr-moving-services-waste-removal", "helio-pintor-profissional", "roger-transport-services"].includes(trader.id);
     const imageAlt = trader.id === "jm-home-improvement-swindon"
       ? `${trader.name} logo`
