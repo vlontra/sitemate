@@ -6,6 +6,7 @@ Projeto estático para um único deploy na Hostinger:
 - `/profile.html?id=...` — perfil de um profissional;
 - `/systems/` — GroundWorks Systems;
 - `/demo/` — exemplo de site de paisagismo (marca fictícia, conteúdo ilustrativo e chat demonstrativo);
+- `/demo/br-electrical/` — conceito de site para a BR Electrical Services, com informações e imagens públicas do negócio;
 - `/directory/` — redirecionamento de compatibilidade para a página inicial.
 
 O diretório, o site Systems e a demo compartilham o mesmo repositório. No deploy da Hostinger, publique a **raiz do repositório como site estático**; não selecione apenas `systems/` ou `directory/` como diretório de publicação. Não há `package.json` nem etapa de build.
