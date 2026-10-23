@@ -169,7 +169,7 @@
   };
 
   const state = {
-    language: localStorage.getItem("groundworks-language") === "en" ? "en" : "pt",
+    language: localStorage.getItem("groundworks-language") === "pt" ? "pt" : "en",
     trade: "all",
     location: "all",
     sort: "recommended",
