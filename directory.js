@@ -203,7 +203,7 @@
 
   const traderImage = (trader) => {
     const image = validImage(trader.image_url);
-    if (!image || trader.id !== "roger-transport-services") return image;
+    if (!image || !["roger-transport-services", "d-and-d-landscapes"].includes(trader.id)) return image;
     const url = new URL(image);
     url.searchParams.set("v", "2");
     return url.href;
@@ -621,7 +621,7 @@
     const website = validWebsite(trader.website);
     const email = validEmail(trader.email);
     const image = traderImage(trader);
-    const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem", "avr-moving-services-waste-removal", "helio-pintor-profissional", "roger-transport-services"].includes(trader.id);
+    const imageUsesContain = ["jm-home-improvement-swindon", "m-major-handyman-jardinagem", "avr-moving-services-waste-removal", "helio-pintor-profissional", "roger-transport-services", "d-and-d-landscapes"].includes(trader.id);
     const imageAlt = trader.id === "jm-home-improvement-swindon"
       ? `${trader.name} logo`
       : `${trader.name} services`;
